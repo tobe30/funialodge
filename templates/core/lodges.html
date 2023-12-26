@@ -1,0 +1,117 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block content%}
+
+    
+      <div class="page-heading header-text">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <span class="breadcrumb"><a href="#">Home</a> / Lodges</span>
+              <h3>Lodges</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container mb-30 mt-30">
+        <div class="row">
+      <div class="col-lg-12">
+        <a class="shop-filter-toogle" href="#">
+            <span class="fi-rs-filter mr-5"></span>
+            Filters
+            <i class="fi-rs-angle-small-down angle-down"></i>
+            <i class="fi-rs-angle-small-up angle-up"></i>
+        </a>
+        <div class="shop-product">
+            <div class="row">
+                <div class="col-xl-4 col-lg-4 col-md-6 mb-lg-0 mb-md-2 mb-sm-2">
+                    <div class="card">
+                        <h5 class="mb-30">By Categories</h5>
+                        <div class="categories-dropdown-wrap font-heading">
+                            <ul>
+                                {% for category in categories %}
+                                <li>
+                                    <a href="{% url 'core:lodges' %}?query={{ query }}&category={{ category.id }}"> <img src="assets/imgs/theme/icons/category-1.svg" alt="" />{{ category.title }}</a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 mb-lg-0 mb-md-2 mb-sm-2">
+                    <div class="card">
+                        <h5 class="mb-30">Search Lodges</h5>
+                        <div class="d-flex">
+                          <div class="custom-checkbox">
+                            <form action="{% url 'core:lodges' %}" method="get">
+                           <input type="text" class="form-control" name="query" value="{{ query }}" placeholder="Find available lodges">
+                           <button class="btn mt-2">Search</button>
+                           </form>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+              
+                <div class="col-xl-4 col-lg-4 col-md-6 mb-lg-0 mb-md-5 mb-sm-5">
+                    <div class="card">
+                        <h5 class="mb-10">By Price</h5>
+                        <div class="sidebar-widget price_range range">
+                            <div class="price-filter mb-20">
+                                <div class="price-filter-inner">
+                                    <div id="slider-range" class="mb-20"></div>
+                                    <div class="d-flex justify-content-between">
+                                      <input type="range" name="ranDge" value="{{ min_max_price.price__min }}" class="slider-range"  id="range" min="{{ min_max_price.price__min }}" max="{{ min_max_price.price__max }}" oninput="max_price.value=this.value">
+                                      
+                                        <div class="">From: <strong id="slider-range-value1" class="text-brand">₦{{ min_max_price.price__min }} </strong> </div>
+                                        <div class="">To: <strong id="slider-range-value2" class="text-brand">₦{{ min_max_price.price__max}}</strong></div>
+                                        
+                                    </div>
+                                    <input type="number" name="" value="{{ min_max_price.price__min }}" id="max_price" min="{{ min_max_price.price__min }}" max="{{ min_max_price.price__max }}" placeholder="Current price" onkeyup="range.value=this.value">           
+                                </div>
+                                <button class="btn mt-2" type="button" id="price-filter-btn">Apply</button>
+
+                            </div>
+                         
+                        </div>
+                    </div>
+                </div>
+                <a href="{% url 'core:lodges' %}"> <button class="btn mt-2">clear filter</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+    
+      <div class="section properties">
+        <div class="container">
+            <p style="margin-top: 10px; color: green;">{{lodge.count}} + Options</p>
+            <h2>Recommended Lodges in Funia</h2>
+            <div class="row properties-box"  id="filtered-product">
+              {% for l in lodge %}
+            <div class="col-lg-4 col-md-6 align-self-center mb-30 properties-items col-md-6 adv">
+              <div class="item">
+                <a href="{% url 'core:details' l.lid %}"><img src="{{l.image.url}}" width="100%" alt=""></a>
+                <span class="category">{{l.title}}</span>
+                <h6>₦{{l.price}}</h6>
+                <h4><a href="{% url 'core:details' l.lid %}">{{l.description|safe|truncatechars:50}}</a></h4>
+                <ul>
+                  <li>rooms: <span>{{l.rooms}}</span></li>
+                  <li>Floor: <span>{{l.floor}}</span></li>
+                
+                </ul>
+                
+                <div class="main-button">
+                  <a href="{% url 'core:details' l.lid %}">Schedule a visit</a>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          
+          </div>
+        
+        </div>
+      </div>
+
+      {% endblock %}
+  

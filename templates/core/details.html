@@ -1,0 +1,94 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block content%}
+
+      <div class="house-details">
+        <div class="house-title">
+          
+            <h1>{{lodge.title}}</h1>
+            <div class="row">
+                <div>
+                    <i class="fas fa-star" style="color: green;"></i>
+                    <i class="fas fa-star" style="color: green;"></i>
+                    <i class="fas fa-star" style="color: green;"></i>
+                    <i class="fas fa-star-half-alt" style="color: green;"></i>
+                    <span>245 Reviews</span>
+                </div>
+                <div>
+                    <p>Ebonyi State Nigeria</p>
+                </div>
+            </div>
+        </div>
+        <div class="gallery">
+            <div class="gallery-img-1"><img src="{{lodge.image.url}}"  alt=""></div>
+            {% for p in p_image %}
+            <div><img src="{{ p.images.url }}" alt=""></div>
+            {% endfor %}
+
+            
+        </div>
+        <div class="small-details">
+          
+            <h2>Entire rental unit hosted by Brandon</h2>
+            <p>{{lodge.floor}} floor &nbsp; &nbsp; {{lodge.rooms}} room &nbsp; &nbsp;</p>
+            <h4>₦{{lodge.price}} / day</h4>
+           
+        </div>
+        <hr class="line">
+       
+
+        <ul class="details-list">
+            <li><i class="fas fa-home"></i> Entire house
+                <span>You will have the entire flat for you.</span>
+            </li>
+            <li><i class="fas fa-paint-brush"></i>Ehanced Clean
+                <span>This host has committed to staybnb's cleaning process</span>
+            </li>
+            <li><i class="fas fa-map-marker-alt"></i> Greate Location
+                <span>90% of recent guests gave the location a 5 star rating</span>
+            </li>
+            <li><i class="fas fa-heart"></i> Great Check-in Experience
+                <span>You will have the entire flat for you.</span>
+            </li>
+        </ul>
+
+        <hr class="line">
+
+        <p class="home-desc">{{lodge.description}}?</p>
+         <hr class="line">
+
+         <div class="map">
+            <h3>Location on map</h3>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3088.881794119433!2d8.138723373662751!3d6.131775793855021!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x105ca327b3aa4b83%3A0x2bc9941002900856!2sAE-FUNAI%20(Alex%20Ekwueme%20Federal%20University%2C%20Ndufu-%20Alike%2C%20Ikwo)!5e1!3m2!1sen!2sng!4v1702722261498!5m2!1sen!2sng" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <b>44JR+PG7, IKWO IKWO LGA, Abakaliki</b>
+            <p>It's like a home away from home.</p>
+         </div>
+
+         <hr class="line">
+       
+         <div class="host">
+            {{profile.bio}}
+            <!--<img src="{{request.user.profile.image.url}}" alt="">-->
+            <img src="{% static 'assets/images/default-pp.png' %}" alt="">
+            <div>
+                {% if lodge.user %}
+                <h2>Hosted by {{lodge.user.username}}</h2>
+                {% endif %}
+                <p>
+                    <span>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                    </span>
+                    &nbsp; &nbsp; 245 reviews &nbsp; &nbsp; response rate 100% &nbsp; &nbsp;
+                    Response time: 60 mins
+                </p>
+            </div>
+         </div>
+         {% if lodge.user %}
+         <a href="{% url 'core:caretaker' lodge.user.pk %}" class="contact-host">Contact Caretaker</a>
+         {% endif %}
+    </div>
+
+   {% endblock %}

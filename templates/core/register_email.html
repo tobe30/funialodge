@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f8f8;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      color: #333333;
+    }
+
+    p {
+      color: #555555;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 24px;
+      font-size: 18px;
+      text-align: center;
+      text-decoration: none;
+      background-color: #3498db;
+      color: #ffffff;
+      border-radius: 5px;
+    }
+
+    .image-container {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    img {
+      max-width: 50%;
+      height: auto;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .footer {
+      margin-top: 20px;
+      padding-top: 10px;
+      border-top: 1px solid #dddddd;
+      text-align: center;
+      color: #888888;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="image-container">
+      <img src="{% static 'assets/images/cropped-funai_Logo-1.png' %}" alt="Welcome Image">
+    </div>
+
+    <h1>Welcome to Funia Lodge</h1>
+    <p>Hello {{ form.cleaned_data.username }},</p>
+    <p>Thanks for joining our amazing plateform and thanks for participation in saving and solving our student problems we kindly appreciate ur effort</p>
+    <p>All caretakers are required to Post thier various lodges, rooms, accomodation and availabilty</p>
+    <ul>
+      <li>Note: This registration is strictly for caretakers to Post thier lodges any other user will be deleted and Blocked or state ur reasons.</li>
+    </ul>
+    <p>If you have any questions, feel free to reply to this email. We're here to help!
+    </p>
+
+    <div class="footer">
+      <p>Best Regards,<br> The Funia Student Corporation Team</p>
+    </div>
+  </div>
+</body>
+</html>
