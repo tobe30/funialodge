@@ -1,0 +1,25 @@
+
+  {% for p in products %}
+<div class="col-lg-4 col-md-6 align-self-center mb-30 properties-items col-md-6 adv">
+  <div class="item">
+    <a href="{% url 'core:details' p.lid %}"><img src="{{l.image.url}}" width="100%" alt=""></a>
+    <span class="category">{{p.titpe}}</span>
+    <h6>₦{{p.price}}</h6>
+    <h4><a href="{% url 'core:details' p.lid %}">{{p.description|safe|truncatechars:50}}</a></h4>
+    <ul>
+      <li>rooms: <span>{{p.rooms}}</span></li>
+      <li>Floor: <span>{{p.floor}}</span></li>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star-half-alt"></i>
+      <i class="far fa-star"></i>
+    </ul>
+    
+    <div class="main-button">
+      <a href="{% url 'core:details' p.lid %}">Schedule a visit</a>
+    </div>
+  </div>
+</div>
+{% endfor %}
+

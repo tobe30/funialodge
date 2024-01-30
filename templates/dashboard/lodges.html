@@ -1,0 +1,57 @@
+{% extends 'partials/dashnav.html' %}
+{% load static %}
+{% block content%}
+
+<main id="main" class="main">
+    <div class="row">
+      <div class="col-md-12">
+          <div class="card">
+              
+    
+
+
+              <div class="card-header">
+                  <h4>Categories</h4>
+              </div>
+
+        <div class="card-body" id="category_table">
+
+          <table class="table table-border datatable">
+            <thead>
+              <tr>
+                <th scope="col">id</th>
+                <th scope="col">Name</th>
+                <th scope="col">image</th>
+                <th scope="col">price</th>
+                <th scope="col">Category</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for p in product %}
+                    <tr>
+                        <td>{{p.lid}}</td>
+                        <td>{{p.title}}</td>
+                        <td>
+                            <img src="{{p.image.url}}" width="50px" height="50px" alt="">
+                        </td>
+                        <td>{{p.price}}</td>
+                        <td>{{p.category}}</td>
+                        <td><a href="{% url 'dashboard:dashboard-edit' p.lid %}" class="btn btn-primary">Edit</a>
+                           
+                       <td><a href="{% url 'dashboard:delete-products' p.lid %}" class="btn btn-sm btn-danger">Delete</button></td> 
+                            <!--<button type="button" class="btn btn-sm btn-danger delete_category_btn" value="">Delete</button>-->
+                            
+                    </tr>
+                    {% endfor %}
+        
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+      </div>
+    </div><!--badge bg-success End Recent Sales -->
+  </main><!-- End #main badge bg-danger-->
+
+{% endblock%}

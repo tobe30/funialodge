@@ -1,0 +1,48 @@
+{% extends 'partials/dashnav.html' %}
+{% load static %}
+{% block content%}
+
+<main id="main" class="main">
+    <div class="row">
+      <div class="col-md-12">
+          <div class="card">
+              
+    
+
+
+              <div class="card-header">
+                  <h4>Categories</h4>
+              </div>
+
+        <div class="card-body" id="category_table">
+
+          <table class="table table-border datatable">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">messages</th>
+                <th scope="col">email</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for p in product %}
+                    <tr>
+                        <td>{{p.full_name}}</td>
+                        <td>{{p.message}}</td>
+                        <td>{{p.email}}</td>
+                           
+                            <!--<button type="button" class="btn btn-sm btn-danger delete_category_btn" value="">Delete</button>-->
+                            
+                    </tr>
+                    {% endfor %}
+        
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+      </div>
+    </div><!--badge bg-success End Recent Sales -->
+  </main><!-- End #main badge bg-danger-->
+
+{% endblock%}

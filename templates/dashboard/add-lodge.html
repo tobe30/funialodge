@@ -1,0 +1,83 @@
+{% extends 'partials/dashnav.html' %}
+{% load static %}
+{% block content%}
+  
+  <main id="main" class="main">
+    <h1>Add Lodge</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+        <li class="breadcrumb-item">Lodge</li>
+        <li class="breadcrumb-item active">Add Lodge</li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+  <div class="container">
+    <div class="row">
+     <div class="col-md-12">
+         <div class="card">
+             <div class="card-header mb-3">
+                 <h4>Add Lodge</h4>
+             </div>
+             <div class="card-body">
+                 <form  method="POST" enctype="multipart/form-data">
+                 <div class="row">
+                  {% if form.errors %}
+                                    
+                                
+                  <div class="col-md-12">
+                    <div class="alert alert-danger">
+                      {% for field, error in form.errors.items %}
+                        <strong>{{ field }}:</strong> {{ error }}<br>
+                      {% endfor %}
+                    </div>
+                  </div>
+                  {% endif %}
+                  {% csrf_token %}
+                 <div class="col-md-12 ">
+                    <label for="name">Select Category</label>
+                    {{form.category}}
+                    </div>
+                     <div class="col-md-6 mb-3">
+                     <label for="name">Name</label>
+                     {{form.title}}
+                     </div>
+                     <div class="col-md-6">
+                     <label for="">Price</label>
+                     {{form.price}}
+                     </div>
+                     <div class="col-md-12 mb-3">
+                     <label for="">Description</label>
+                     {{form.description}}
+                     </div>
+                     <div class="col-md-12 mb-3">
+                     <label for="">Upload image</label>
+                     {{form.image}}
+                     </div>
+                     <div class="col-md-12 mb-3">
+                      <label for="">Add Extra Rooms images (Choose multiple room images)</label>
+                      {{form.images}}
+                      </div>
+                     <div class="col-md-6 mb-3">
+                     <label for="">Rooms</label>
+                     {{form.rooms}}
+                     </div>
+                     <div class="col-md-6 mb-3">
+                      <label for="">Floor</label>
+                      {{form.floor}}
+                      </div>
+                     <div class="col-md-12">
+                         <button type="submit" class="btn"  style="background-color: green; color: #fff;">Post</button>
+                     </div>
+                 </div>
+                 </form>
+ 
+             </div>
+         </div>
+     </div>
+    </div>
+ </div>
+ 
+</main>
+
+{% endblock %}
